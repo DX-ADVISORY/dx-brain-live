@@ -1,0 +1,104 @@
+<!doctype html><html lang="vi"><head><meta name="robots" content="noindex,nofollow,noarchive"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>DX · Bộ não đang học v6</title>
+<style>
+:root{--bg:#070b12;--pn:#0d1420;--ln:#1c2738;--tx:#d7e1ee;--mu:#7d8ba1;--ok:#3ee08f;--am:#f5b942;--bad:#ff5d73;--cy:#38d9f5;--vi:#a78bfa}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 50% 30%,#0c1726,#05080d 70%);color:var(--tx);font:13px/1.45 ui-monospace,Consolas,"Segoe UI",monospace;min-height:100vh}
+header{display:flex;align-items:center;gap:14px;padding:12px 20px;border-bottom:1px solid var(--ln);flex-wrap:wrap}
+.logo{width:38px;height:38px;border:1px solid #c9a24a;color:#e6c06a;display:grid;place-items:center;font-weight:700}
+h1{font-size:15px;letter-spacing:.14em;margin:0;color:#e6c06a}h1 b{color:var(--tx)}
+.pill{border:1px solid var(--ok);color:var(--ok);border-radius:99px;padding:2px 10px;font-size:12px}.pill i{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--ok);margin-right:6px;animation:bl 1.2s infinite}
+.badge{border:1px solid var(--vi);color:var(--vi);border-radius:4px;padding:1px 7px;font-size:11px}
+.sp{flex:1}button{background:#111b2a;color:var(--tx);border:1px solid var(--ln);border-radius:6px;padding:5px 10px;font:inherit;cursor:pointer}button:hover{border-color:var(--cy)}
+@keyframes bl{50%{opacity:.2}}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px;padding:12px 20px}
+.k{background:var(--pn);border:1px solid var(--ln);border-radius:10px;padding:10px 12px;position:relative;overflow:hidden}
+.k:after{content:"";position:absolute;inset:auto 0 0 0;height:2px;background:linear-gradient(90deg,transparent,var(--c,var(--cy)),transparent);animation:sw 3s linear infinite}
+@keyframes sw{from{transform:translateX(-100%)}to{transform:translateX(100%)}}
+.k .v{font-size:28px;font-weight:700;color:var(--c,var(--cy));text-shadow:0 0 14px var(--c,var(--cy))}.k .l{color:var(--mu);font-size:11px;text-transform:uppercase;letter-spacing:.08em}.k .s{font-size:11px;color:var(--mu)}
+main{display:grid;grid-template-columns:260px 1fr 330px;gap:10px;padding:0 20px 12px}
+@media(max-width:1100px){main{grid-template-columns:1fr}}
+.pn{background:var(--pn);border:1px solid var(--ln);border-radius:10px;padding:10px 12px}.pn h3{margin:0 0 8px;font-size:11px;letter-spacing:.12em;color:var(--mu);text-transform:uppercase}
+.reg{display:flex;align-items:center;gap:8px;padding:6px 8px;border-radius:6px;cursor:pointer;border:1px solid transparent}.reg:hover,.reg.on{border-color:var(--ln);background:#121c2c}
+.reg .n{width:22px;height:22px;border-radius:4px;display:grid;place-items:center;font-size:11px;color:#000;font-weight:700}.reg .d{margin-left:auto;width:8px;height:8px;border-radius:50%}
+#stage{position:relative;min-height:560px;padding:0;overflow:hidden}canvas#c{width:100%;height:100%;display:block;position:absolute;inset:0}
+#card{position:absolute;right:12px;top:12px;width:280px;background:#0a111ccc;backdrop-filter:blur(6px);border:1px solid var(--ln);border-radius:10px;padding:12px;display:none}
+#card h4{margin:0 0 4px;font-size:14px}#card .st{font-size:11px;margin-bottom:6px}#card p{margin:4px 0;color:#b9c6d8}
+.lg{height:270px;overflow:hidden;font-size:12px}.lg div{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.lg .t{color:var(--mu)}.lg .ok{color:var(--ok)}.lg .am{color:var(--am)}.lg .cy{color:var(--cy)}
+.bar{display:grid;grid-template-columns:118px 1fr 30px;gap:6px;align-items:center;margin:3px 0;font-size:11px}.bar span{height:9px;border-radius:3px;background:linear-gradient(90deg,var(--vi),var(--cy));width:0;transition:width 1.6s cubic-bezier(.2,.8,.2,1);box-shadow:0 0 8px #38d9f566}
+.tl{padding:0 20px 16px}.tlb{display:flex;align-items:flex-end;gap:3px;height:70px}.tlb i{flex:1;background:linear-gradient(0deg,#1e3a5f,var(--cy));border-radius:2px 2px 0 0;opacity:.85;transform-origin:bottom;animation:gr 1.2s ease-out both}
+@keyframes gr{from{transform:scaleY(0)}}
+.foot{color:var(--mu);font-size:11px;padding:0 20px 18px}
+.reduced *{animation:none!important;transition:none!important}
+</style></head><body>
+<header><div class="logo">DX</div><h1>DX ADVISORY · <b>BỘ NÃO ĐANG HỌC</b></h1><span class="pill"><i></i>đang chạy · <span id="up">00:00:00</span></span><span class="badge" id="ver"></span><span class="sp"></span><span class="s" style="color:var(--mu)" id="snapat"></span><button id="rm">Giảm chuyển động</button></header>
+<section class="kpis" id="kpis"></section>
+<main>
+<div class="pn"><h3>10 vùng chức năng</h3><div id="regs"></div><h3 style="margin-top:12px">Kỹ năng theo lĩnh vực</h3><div id="bars"></div></div>
+<div class="pn" id="stage"><canvas id="c"></canvas><div id="card"></div></div>
+<div class="pn"><h3>Nhật ký · tail -f brain.log</h3><div class="lg" id="log"></div><h3 style="margin-top:12px">Lịch tự động</h3><div id="sched" style="font-size:12px"></div></div>
+</main>
+<section class="tl"><div class="pn"><h3>Bộ não lớn dần · số thẻ tri thức qua từng phiên bản catalog</h3><div class="tlb" id="tlb"></div><div id="tll" style="display:flex;justify-content:space-between;color:var(--mu);font-size:10px;margin-top:4px"></div></div></section>
+<div class="foot" id="foot"></div>
+<script id="snap" type="application/json">{"generated_at": "05/11/2026 16:08 (UTC+7)", "brain": {"status": "PASS", "sources": "12/12", "version": "5.0.3-repair2"}, "kpis": [{"l": "Skills chuyên môn", "v": 265, "s": "11 lĩnh vực · thư viện skills", "c": "#a78bfa"}, {"l": "Thẻ tri thức catalog v39", "v": 63, "s": "+30 bài nâng cấp tự động vào bộ nhớ", "c": "#38d9f5"}, {"l": "Bài học đã duyệt", "v": 52, "s": "nâng cấp 40 · gộp 9 · loại 3", "c": "#3ee08f"}, {"l": "Nguồn brain đọc được", "v": 12, "s": "/12 · status PASS", "c": "#3ee08f"}, {"l": "Điểm eval suy luận", "v": 0.381, "d": 3, "s": "Tư duy 0.48 · Suy luận 0.28 · 30 câu", "c": "#f5b942"}], "regions": [{"name": "Bộ nhớ", "color": "#38d9f5", "status": "pass", "state": "đọc qua brain", "holds": "Bộ nhớ dài hạn DX_HUMAN_MEMORY: bootstrap, hợp đồng liên tục, gói bài học tự nâng cấp.", "count": "40 bài đã nâng cấp/đã có", "next": "Tự duyệt ứng viên mới lúc 22:00"}, {"name": "Tri thức", "color": "#f5b942", "status": "pass", "state": "catalog v39", "holds": "Catalog thẻ tri thức có nguồn (LinkedIn, tài liệu chuyên môn).", "count": "63 thẻ", "next": "Bổ sung thẻ DSCR, covenant, WACC, DCF, tái cấu trúc"}, {"name": "Tư duy", "color": "#a78bfa", "status": "pending", "state": "eval 0.48", "holds": "Cách đặt vấn đề, khung phân tích nhiều bước.", "count": "điểm 0.478", "next": "Nâng điểm qua thẻ mới; eval lại Chủ nhật"}, {"name": "Suy luận", "color": "#6b8cff", "status": "pending", "state": "eval 0.28", "holds": "Chuỗi lập luận định lượng: bankability, DSCR, định giá.", "count": "điểm 0.283", "next": "Thêm ví dụ tính toán có đáp án mẫu"}, {"name": "Kiến thức đầu vào", "color": "#3ee0b0", "status": "pass", "state": "feed + harvest chạy tự động", "holds": "ChatGPT, Claude, Grok, X, OneDrive/GDrive, Obsidian, GitHub → hộp ứng viên.", "count": "52 ứng viên đã qua cổng lọc", "next": "Thu hoạch export mới mỗi đêm"}, {"name": "Skills chuyên môn", "color": "#ff7eb6", "status": "pass", "state": "265 skills", "holds": "Thư viện skills CFO, ngân hàng, kế toán thuế, M&A, xây dựng, nha khoa, CNTT.", "count": "Kế toán, thuế, kiểm toán 48, PE, M&A & đầu tư 45, CNTT & AI 43, CFO & FP&A 35", "next": "Gắn skills vào bộ định tuyến"}, {"name": "Học hỏi", "color": "#ff9a4d", "status": "pass", "state": "tự duyệt hằng ngày", "holds": "Vòng học: ứng viên → cổng lọc → nâng cấp / gộp / loại, có biên nhận và rollback.", "count": "nâng cấp 30 · gộp 9 · loại 3", "next": "Chạy lại 22:00"}, {"name": "Kiểm thử", "color": "#c6f04a", "status": "pass", "state": "eval + readback", "holds": "Bộ eval 30 câu và kiểm tra truy vấn ngược trên brain đang chạy.", "count": "30 câu · lỗi 0", "next": "Eval tự động Chủ nhật 20:00"}, {"name": "Phản biện & liên thông", "color": "#ff5d73", "status": "pass", "state": "cổng RAG QA", "holds": "DX_RAG_QA_GATE: chỉ trả lời có nguồn, gắn cờ mâu thuẫn.", "count": "1 cổng đang được brain đọc", "next": "Đo tỷ lệ trích nguồn"}, {"name": "Bộ não trung tâm", "color": "#e8f4ff", "status": "pass", "state": "PASS 12/12", "holds": "Bộ não trung tâm chạy nội bộ, đọc bộ nhớ chung và tri thức chuyên môn.", "count": "phiên bản 5.0.3-repair2", "next": "Tự khởi động lại an toàn khi danh sách đọc đổi"}], "skills": {"total": 265, "domains": [["Kế toán, thuế, kiểm toán", 48], ["PE, M&A & đầu tư", 45], ["CNTT & AI", 43], ["CFO & FP&A", 35], ["Ngân hàng & vốn vay", 30], ["Vốn & nhà đầu tư", 17], ["Pháp lý & quản trị", 16], ["BĐS & dự án", 13], ["Xây dựng", 11], ["Nha khoa", 5], ["Khác", 2]]}, "growth": [["v1", 4, "29/10"], ["v2", 5, "29/10"], ["v3", 6, "30/10"], ["v4", 8, "30/10"], ["v5", 9, "30/10"], ["v6", 11, "31/10"], ["v7", 11, "31/10"], ["v8", 13, "31/10"], ["v9", 13, "31/10"], ["v10", 14, "31/10"], ["v11", 15, "31/10"], ["v12", 16, "31/10"], ["v13", 17, "31/10"], ["v14", 18, "31/10"], ["v15", 19, "31/10"], ["v16", 39, "01/11"], ["v17", 40, "01/11"], ["v18", 41, "01/11"], ["v19", 42, "01/11"], ["v20", 43, "01/11"], ["v21", 45, "01/11"], ["v22", 46, "01/11"], ["v23", 48, "01/11"], ["v24", 49, "01/11"], ["v25", 50, "01/11"], ["v26", 51, "01/11"], ["v27", 52, "01/11"], ["v28", 53, "01/11"], ["v29", 54, "01/11"], ["v30", 55, "01/11"], ["v31", 56, "02/11"], ["v32", 57, "02/11"], ["v33", 57, "02/11"], ["v34", 58, "02/11"], ["v35", 59, "02/11"], ["v36", 60, "02/11"], ["v37", 61, "02/11"], ["v38", 62, "02/11"], ["v39", 63, "03/11"]], "schedule": [["05/11 22:17", "Feed bộ nhớ"], ["05/11 22:16", "Thu hoạch ChatGPT export"], ["05/11 22:00", "Tự duyệt + nạp brain"], ["05/11 22:30", "Làm mới sơ đồ v6"], ["08/11 20:00", "Eval suy luận hằng tuần"]], "log": [["05/11 13:38", "ok", "FEED", "auto-commit tệp nội bộ → b570cc9b đã push · governed_publish_verified"], ["05/11 13:46", "cy", "TRIAGE", "52 ứng viên qua cổng lọc bí mật/bệnh nhân · phân khách hàng · gộp trùng"], ["05/11 13:46", "ok", "PROMOTE", "30 nâng cấp mới · 10 đã có · 9 gộp · 3 loại"], ["05/11 13:50", "cy", "HARVEST", "ChatGPT export harvest v3 chạy thử: chưa có export mới"], ["05/11 14:03", "ok", "BRAIN", "khởi động lại an toàn 9,7 s · /health ok · status PASS 12/12"], ["05/11 14:05", "ok", "READBACK", "gói khách hàng pack · AutoPromoted pack · DX_RAG_QA_GATE đều trả về"], ["05/11 13:12", "am", "EVAL", "30 câu suy luận: 0.381 · Tư duy 0.48 · Suy luận 0.28"], ["11-05 13:12", "am", "EVAL", "receipt: overall 0.381 · card hit 0.567"], ["05/11 16:08", "ok", "SNAPSHOT", "làm mới sơ đồ · brain PASS 12/12 · 265 skills · 63 thẻ"], ["lịch", "t", "CRON", "Feed bộ nhớ · chạy tới 05/11 22:17"], ["lịch", "t", "CRON", "Thu hoạch ChatGPT export · chạy tới 05/11 22:16"], ["lịch", "t", "CRON", "Tự duyệt + nạp brain · chạy tới 05/11 22:00"], ["lịch", "t", "CRON", "Làm mới sơ đồ v6 · chạy tới 05/11 22:30"], ["lịch", "t", "CRON", "Eval suy luận hằng tuần · chạy tới 08/11 20:00"]], "inputs": ["ChatGPT", "Claude", "Grok", "X", "OneDrive/GDrive", "Obsidian", "GitHub"], "max_neurons": 900, "sources": ["trạng thái brain", "catalog tri thức", "thư viện skills", "bộ eval", "trạng thái tự duyệt", "lịch chạy tự động"], "missing": [], "public": true}</script>
+<script>
+const S=JSON.parse(document.getElementById('snap').textContent);const $=q=>document.querySelector(q);
+let reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;const setR=()=>{document.body.classList.toggle('reduced',reduced);$('#rm').textContent=reduced?'Bật chuyển động':'Giảm chuyển động'};setR();$('#rm').onclick=()=>{reduced=!reduced;setR()};
+$('#ver').textContent='v6 · brain '+(S.brain.version||'?');$('#snapat').textContent='Ảnh dữ liệu: '+S.generated_at;
+const t0=Date.now();setInterval(()=>{const s=Math.floor((Date.now()-t0)/1000);$('#up').textContent=[s/3600,s/60%60,s%60].map(x=>String(Math.floor(x)).padStart(2,'0')).join(':')},1000);
+// KPIs
+const K=S.kpis;$('#kpis').innerHTML=K.map((k,i)=>`<div class="k" style="--c:${k.c}"><div class="l">${k.l}</div><div class="v" data-v="${k.v}" data-d="${k.d||0}">0</div><div class="s">${k.s}</div></div>`).join('');
+document.querySelectorAll('.k .v').forEach(el=>{const v=+el.dataset.v,d=+el.dataset.d,st=performance.now();const f=t=>{const p=reduced?1:Math.min(1,(t-st)/1800),e=1-Math.pow(1-p,3);el.textContent=(v*e).toFixed(d)+(el.dataset.suf||'');if(p<1)requestAnimationFrame(f)};requestAnimationFrame(f)});
+// regions
+const R=S.regions;$('#regs').innerHTML=R.map((r,i)=>`<div class="reg" data-i="${i}"><span class="n" style="background:${r.color}">${String(i+1).padStart(2,'0')}</span>${r.name}<span class="d" style="background:${r.status=='pass'?'var(--ok)':'var(--am)'}"></span></div>`).join('');
+document.querySelectorAll('.reg').forEach(e=>e.onclick=()=>show(+e.dataset.i));
+function show(i){sel=i;const r=R[i];document.querySelectorAll('.reg').forEach(e=>e.classList.toggle('on',+e.dataset.i==i));const c=$('#card');c.style.display='block';c.innerHTML=`<h4 style="color:${r.color}">${String(i+1).padStart(2,'0')} · ${r.name}</h4><div class="st" style="color:${r.status=='pass'?'var(--ok)':'var(--am)'}">● ${r.status=='pass'?'Đạt':'Đang chờ'} · ${r.state}</div><p>${r.holds}</p><p><b>Số liệu:</b> ${r.count}</p><p><b>Bước tiếp:</b> ${r.next}</p>`}
+// bars
+const D=S.skills.domains,mx=Math.max(...D.map(d=>d[1]));$('#bars').innerHTML=D.map(d=>`<div class="bar"><div>${d[0]}</div><span data-w="${d[1]/mx*100}"></span><div>${d[1]}</div></div>`).join('');setTimeout(()=>document.querySelectorAll('.bar span').forEach(s=>s.style.width=s.dataset.w+'%'),200);
+// timeline
+const G=S.growth;$('#tlb').innerHTML=G.map((g,i)=>`<i title="${g[0]} · ${g[2]} · ${g[1]} thẻ" style="height:${g[1]/G[G.length-1][1]*100}%;animation-delay:${i*40}ms"></i>`).join('');$('#tll').innerHTML=`<span>${G[0][0]} · ${G[0][2]} · ${G[0][1]} thẻ</span><span>${G[G.length-1][0]} · ${G[G.length-1][2]} · ${G[G.length-1][1]} thẻ</span>`;
+$('#sched').innerHTML=S.schedule.map(x=>`<div><span style="color:var(--cy)">${x[0]}</span> ${x[1]}</div>`).join('');
+$('#foot').textContent='Nguồn số liệu: '+S.sources.join(' · ')+'. Không chứa khóa, mật khẩu hay dữ liệu khách hàng.';
+// log typewriter
+const L=S.log;let li=0;const box=$('#log');function nextLog(){const e=L[li++%L.length];const d=document.createElement('div');d.innerHTML=`<span class="t">${e[0]}</span> <span class="${e[1]}">[${e[2]}]</span> `;const sp=document.createElement('span');d.appendChild(sp);box.appendChild(d);while(box.children.length>16)box.removeChild(box.firstChild);let k=0;const ty=()=>{sp.textContent=e[3].slice(0,k+=2);if(k<e[3].length&&!reduced)setTimeout(ty,18);else sp.textContent=e[3]};ty();setTimeout(nextLog,reduced?2500:1500)}nextLog();
+// brain canvas
+const cv=$('#c'),x=cv.getContext('2d');let W,H,sel=-1,dpr=Math.min(2,devicePixelRatio||1);
+const pos=[[-.55,-.35],[.35,-.45],[-.2,-.62],[.62,-.1],[-.75,.15],[.5,.38],[-.45,.55],[.05,.62],[.72,-.5],[0,0]];// relative to brain radius
+const SRC=S.inputs;let N=[],E=[],P=[];
+function brainPt(){for(;;){const a=Math.random()*2*Math.PI,r=Math.sqrt(Math.random());let px=Math.cos(a)*r,py=Math.sin(a)*r*.78;if(Math.abs(px)<.04)continue;return[px,py]}}
+function rs(){const b=cv.getBoundingClientRect();W=b.width;H=b.height;cv.width=W*dpr;cv.height=H*dpr;x.setTransform(dpr,0,0,dpr,0,0)}
+function BR(){return Math.min(W*.36,H*.5)}function C(){return[W*.55,H*.52]}
+function toXY(p){const[c0,c1]=C(),r=BR();return[c0+p[0]*r,c1+p[1]*r]}
+function spawn(n){for(let i=0;i<n;i++){const p=brainPt();let reg=0,bd=9;pos.forEach((q,j)=>{const d=(q[0]-p[0])**2+(q[1]-p[1])**2;if(d<bd){bd=d;reg=j}});const nd={p,reg,b:0,ph:Math.random()*6};N.push(nd);const near=N.slice(-60).filter(m=>m!==nd&&((m.p[0]-p[0])**2+(m.p[1]-p[1])**2)<.03).slice(0,2);near.forEach(m=>E.push([nd,m,0]))}if(N.length>S.max_neurons){N.splice(0,n);E=E.filter(e=>N.includes(e[0])&&N.includes(e[1]))}}
+spawn(260);let born=0;
+function src(i){const n=SRC.length;return[W*.06,H*(.12+.76*i/(n-1))]}
+const gate=()=>[W*.2,H*.52];
+function bez(a,b,c,t){const u=1-t;return[u*u*a[0]+2*u*t*b[0]+t*t*c[0],u*u*a[1]+2*u*t*b[1]+t*t*c[1]]}
+function emit(){const i=Math.floor(Math.random()*SRC.length);const dest=[4,0,1][Math.floor(Math.random()*3)];P.push({s:i,d:dest,t:0,ph:0,v:.006+Math.random()*.006})}
+let last=0;function frame(ts){const dt=Math.min(50,ts-last);last=ts;x.clearRect(0,0,W,H);const[cx,cy]=C(),r=BR(),tt=ts/1000;
+// silhouette
+x.save();x.strokeStyle='#1b2c44';x.lineWidth=1.2;[-1,1].forEach(s=>{x.beginPath();x.ellipse(cx+s*r*.5,cy,r*.52,r*.8,0,0,Math.PI*2);x.stroke()});x.restore();
+// edges
+x.lineWidth=.6;E.forEach(e=>{e[2]=Math.min(1,e[2]+.02);const a=toXY(e[0].p),b=toXY(e[1].p);x.strokeStyle=hexA(R[e[0].reg].color,.18*e[2]);x.beginPath();x.moveTo(a[0],a[1]);x.lineTo(b[0],b[1]);x.stroke()});
+N.forEach(n=>{n.b=Math.min(1,n.b+.03);const q=toXY(n.p),pl=reduced?1:.6+.4*Math.sin(tt*2+n.ph);x.fillStyle=hexA(R[n.reg].color,.75*n.b*pl);x.beginPath();x.arc(q[0],q[1],1.3+(n.reg==sel?1.2:0),0,7);x.fill()});
+// links region->hub
+const hub=toXY(pos[9]);pos.forEach((p,j)=>{if(j==9)return;const q=toXY(p);x.strokeStyle=hexA(R[j].color,j==sel?.7:.22);x.setLineDash([4,6]);x.lineDashOffset=reduced?0:-tt*20;x.beginPath();x.moveTo(q[0],q[1]);x.quadraticCurveTo((q[0]+hub[0])/2,(q[1]+hub[1])/2-30,hub[0],hub[1]);x.stroke();x.setLineDash([])});
+// sources + gate
+x.font='11px ui-monospace,Consolas';const g=gate();SRC.forEach((s,i)=>{const p=src(i);x.strokeStyle='#1d3350';x.beginPath();x.moveTo(p[0]+40,p[1]);x.quadraticCurveTo(g[0]-40,p[1],g[0],g[1]);x.stroke();box2(p[0]-30,p[1]-11,92,22,'#38d9f5',s)});
+box2(g[0]-52,g[1]-34,104,68,'#f5b942','CỔNG LỌC');x.fillStyle='#7d8ba1';x.font='9px ui-monospace';['bí mật/bệnh nhân','phân khách hàng','gộp trùng'].forEach((t,k)=>x.fillText(t,g[0]-46,g[1]+0+k*11));
+// particles
+if(!reduced&&Math.random()<.35)emit();P=P.filter(p=>{p.t+=p.v*dt/16;let q;if(p.ph==0){const a=[src(p.s)[0]+40,src(p.s)[1]];q=bez(a,[g[0]-40,a[1]],g,p.t);if(p.t>=1){p.ph=1;p.t=0}}else if(p.ph==1){const d=toXY(pos[p.d]);q=bez([g[0]+52,g[1]],[(g[0]+d[0])/2,g[1]-60],d,p.t);if(p.t>=1){p.ph=2;p.t=0}}else{const d=toXY(pos[p.d]);q=bez(d,[(d[0]+hub[0])/2,(d[1]+hub[1])/2-30],hub,p.t);if(p.t>=1){if(Math.random()<.5)spawn(1);born++;return false}}
+const col=p.ph==0?'#38d9f5':p.ph==1?'#f5b942':R[p.d].color;x.fillStyle=col;x.shadowColor=col;x.shadowBlur=10;x.beginPath();x.arc(q[0],q[1],2.2,0,7);x.fill();x.shadowBlur=0;return true});
+// region nodes
+pos.forEach((p,j)=>{const q=toXY(p),rr=j==9?0:13,c=R[j].color;if(j==9)return;x.fillStyle=hexA(c,.15);x.beginPath();x.arc(q[0],q[1],rr+6+(reduced?0:2*Math.sin(tt*3+j)),0,7);x.fill();x.fillStyle=c;x.beginPath();x.arc(q[0],q[1],rr,0,7);x.fill();x.fillStyle='#000';x.font='bold 11px ui-monospace';x.textAlign='center';x.fillText(String(j+1).padStart(2,'0'),q[0],q[1]+4);x.fillStyle='#c8d4e4';x.font='11px ui-monospace';x.fillText(R[j].name,q[0],q[1]+28);x.fillStyle=R[j].status=='pass'?'#3ee08f':'#f5b942';x.beginPath();x.arc(q[0]+11,q[1]-11,3.5,0,7);x.fill();x.textAlign='left'});
+// hub
+const pul=reduced?1:1+.12*Math.sin(tt*2.4);const gr=x.createRadialGradient(hub[0],hub[1],0,hub[0],hub[1],70*pul);gr.addColorStop(0,'#ffffffee');gr.addColorStop(.25,'#7ae7ffaa');gr.addColorStop(1,'#38d9f500');x.fillStyle=gr;x.beginPath();x.arc(hub[0],hub[1],70*pul,0,7);x.fill();
+for(let k=0;k<3;k++){const ph=reduced?.5:((tt*.6+k/3)%1);x.strokeStyle=hexA('#38d9f5',.5*(1-ph));x.beginPath();x.arc(hub[0],hub[1],24+ph*90,0,7);x.stroke()}
+x.fillStyle='#04121c';x.font='bold 12px ui-monospace';x.textAlign='center';x.fillText('BỘ NÃO',hub[0],hub[1]-2);x.fillText('TRUNG TÂM',hub[0],hub[1]+12);x.textAlign='left';
+x.fillStyle='#7d8ba1';x.font='11px ui-monospace';x.fillText(`nơ-ron mô phỏng: ${N.length} · hạt tri thức đã vào: ${born} · brain ${S.brain.status} ${S.brain.sources}`,12,H-12);
+requestAnimationFrame(frame)}
+function box2(a,b,w,h,c,t){x.fillStyle='#0a1422';x.strokeStyle=c;x.shadowColor=c;x.shadowBlur=8;x.beginPath();x.roundRect(a,b,w,h,6);x.fill();x.stroke();x.shadowBlur=0;x.fillStyle=c;x.font='11px ui-monospace';x.fillText(t,a+7,b+15)}
+function hexA(h,a){const n=parseInt(h.slice(1),16);return`rgba(${n>>16},${n>>8&255},${n&255},${a})`}
+cv.onclick=ev=>{const b=cv.getBoundingClientRect(),mx=ev.clientX-b.left,my=ev.clientY-b.top;pos.forEach((p,j)=>{const q=toXY(p);if((q[0]-mx)**2+(q[1]-my)**2<(j==9?40:20)**2)show(j)})};
+cv.onmousemove=ev=>{const b=cv.getBoundingClientRect(),mx=ev.clientX-b.left,my=ev.clientY-b.top;let h=-1;pos.forEach((p,j)=>{const q=toXY(p);if((q[0]-mx)**2+(q[1]-my)**2<(j==9?40:20)**2)h=j});cv.style.cursor=h>=0?'pointer':'default';if(h>=0&&h!==sel)show(h)};
+addEventListener('resize',rs);rs();setInterval(()=>{if(!reduced)spawn(2)},900);requestAnimationFrame(frame);show(9);
+</script></body></html>
