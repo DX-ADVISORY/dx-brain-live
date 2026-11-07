@@ -339,6 +339,22 @@ class PageAndRunTests(unittest.TestCase):
         logo = logo_hashes(head)[0]
         self.assertTrue(logo)
 
+    def test_nightly_rewrite_drops_the_hook_and_restore_keeps_the_new_snapshot(self):
+        head = (ROOT / "index.html").read_text(encoding="utf-8")
+        from ops.safety import HOOK, LOG_NEW, LOG_OLD
+
+        rewritten = head.replace(HOOK, "", 1).replace(LOG_NEW, LOG_OLD, 1)
+        self.assertNotIn(HOOK, rewritten)
+        rewritten = rewritten.replace("06/11/2026 20:00 (UTC+7)", "07/11/2026 20:00 (UTC+7)", 1)
+        restored = apply_public_ui_hook(rewritten)
+        self.assertTrue(public_diff_is_safe(rewritten, restored))
+        self.assertIn(HOOK, restored)
+        self.assertEqual(load_snapshot(rewritten)[0], load_snapshot(restored)[0])
+        self.assertEqual(load_snapshot(restored)[1]["generated_at"], "07/11/2026 20:00 (UTC+7)")
+        self.assertEqual(load_snapshot(restored)[1]["legal_vault"]["pdfs"], 43)
+        self.assertEqual(header_line(rewritten), header_line(restored))
+        self.assertEqual(logo_hashes(rewritten), logo_hashes(restored))
+
     def test_worktree_page_stays_inside_the_safe_diff(self):
         head = subprocess.run(
             ["git", "show", "HEAD:index.html"],

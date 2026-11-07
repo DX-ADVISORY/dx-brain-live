@@ -160,7 +160,7 @@
       card("cloud-heartbeat", view.heartbeat.state, "Nhịp cloud", heartbeatValue, heartbeatDetail, ' data-means-ingestion="' + esc(heartbeat.means_ingestion) + '"'),
       card("source-snapshot", view.snapshot.state, "Ảnh nguồn", snapshotValue, snapshotDetail),
       card("ingestion", view.ingestion.state, "Biên nhận thu thập", ingestionValue, ingestionDetail),
-      card("laptop-catchup", view.catchup.state, "Bắt kịp máy nguồn", catchupValue, "Máy nguồn giữ task DX_BrainMap_v6_Refresh lúc 20:00 UTC+7. Quét luật hằng tháng vẫn ở máy nguồn.<ol>" + steps + "</ol>"),
+      card("laptop-catchup", view.catchup.state, "Bắt kịp máy nguồn", catchupValue, "Máy nguồn giữ task DX_BrainMap_v6_Refresh lúc 20:00 UTC+7. Quét luật hằng tháng vẫn ở máy nguồn." + (steps ? '<details><summary>Việc khi máy nguồn mở lại</summary><ol>' + steps + "</ol></details>" : "")),
       '<p class="note">Các số trên thẻ là số trong ảnh đã xuất.</p>'
     ].join("");
   }
@@ -177,12 +177,13 @@
     var style = doc.createElement("style");
     style.id = "dx-cloud-style";
     style.textContent = [
-      "#dx-cloud-status{margin:10px 20px 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:8px}",
+      "#dx-cloud-status{margin:8px 20px 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:8px;align-items:start}",
       "#dx-cloud-status h2{grid-column:1/-1;margin:0;font-size:12px;font-weight:600;letter-spacing:.04em;color:#7d8ba1}",
-      "#dx-cloud-status article{background:#0d1420;border:1px solid #1c2738;border-radius:10px;padding:8px 10px}",
+      "#dx-cloud-status article{background:#0d1420;border:1px solid #1c2738;border-radius:10px;padding:8px 10px;min-width:0}",
       "#dx-cloud-status .k{font-size:11px;color:#7d8ba1}",
       "#dx-cloud-status .v{font-size:13px;margin-top:3px;line-height:1.35}",
       "#dx-cloud-status .s{font-size:11px;color:#9aabbf;margin-top:4px;line-height:1.4}",
+      "#dx-cloud-status details{margin-top:6px}#dx-cloud-status summary{cursor:pointer}",
       "#dx-cloud-status ol{margin:6px 0 0;padding-left:16px}",
       "#dx-cloud-status .note{grid-column:1/-1;margin:0;color:#7d8ba1;font-size:11px}",
       '#dx-cloud-status article[data-state="heartbeat-only"]{border-color:#38d9f5}',

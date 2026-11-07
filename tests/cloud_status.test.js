@@ -98,6 +98,8 @@ assert(shown.includes("Để máy nguồn: ChatGPT, Claude, Grok."), shown);
 assert(shown.includes("local-exercise"), shown);
 assert(shown.includes("&lt;img src=x onerror=alert(1)&gt;"), "catch-up text is escaped");
 assert(!shown.includes("<img src=x"), "raw markup from the contract must not be inserted");
+assert(shown.includes("<details><summary>Việc khi máy nguồn mở lại</summary>"), "reconnect steps stay collapsed");
+assert(!shown.includes("<details open"), "reconnect list does not force the row open");
 assert(shown.includes("data-means-ingestion=\"false\""), shown);
 
 const verified = baseContract();
