@@ -1,0 +1,6 @@
+{
+  "schema": "dx-cloud-source-allowlist/v1",
+  "approved_by": null,
+  "note": "No official source is approved in this repo. The worker must not fetch the network. The laptop monthly legal scan is not listed here.",
+  "sources": []
+}

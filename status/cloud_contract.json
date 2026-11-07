@@ -1,0 +1,147 @@
+{
+  "clocks": {
+    "browser_session": {
+      "animation_is_processing": false,
+      "owner": "browser-tab",
+      "recorded_by_cloud": false,
+      "resets_on": "tab-open"
+    },
+    "cloud_heartbeat": {
+      "means_ingestion": false,
+      "means_publish": false,
+      "means_snapshot_refresh": false,
+      "recorded_at_ict": "2026-11-07T08:54:52.549243+07:00",
+      "recorded_at_utc": "2026-11-07T01:54:52.549243+00:00",
+      "runner": "local-exercise",
+      "schedule_ict": [
+        "07:20",
+        "13:20",
+        "17:20",
+        "01:20 (ngày kế)"
+      ],
+      "schedule_note": "GitHub Actions cron uses UTC and can start late. DX_BrainMap_v6_Refresh stays at 20:00 UTC+7 on the source machine.",
+      "schedule_utc": [
+        "00:20",
+        "06:20",
+        "10:20",
+        "18:20"
+      ],
+      "scheduled_run_completed": false,
+      "stale_after_seconds": 28800,
+      "worker_ran": true
+    },
+    "ingestion": {
+      "attempted": false,
+      "channels_not_read": [
+        "chatgpt",
+        "claude",
+        "grok",
+        "x",
+        "onedrive",
+        "gdrive",
+        "obsidian",
+        "local-brain",
+        "laptop-disk"
+      ],
+      "complete": false,
+      "conversation_access": "not_inferred",
+      "last_verified_at": null,
+      "reason_code": "no_approved_public_source",
+      "receipt_count": 0,
+      "this_run_errors": []
+    },
+    "source_snapshot": {
+      "age_seconds": 46492,
+      "anomaly": null,
+      "commit_committed_at": "2026-11-06T20:02:37+07:00",
+      "commit_sha": "5040f8b3f8cad497bc35a9caa60399ebd4e17f55",
+      "commit_subject": "refresh v6r3 3D+logo+kho luat 2026-11-06 20:00",
+      "content_sha256": "5839201748b32889e5416fa514ffec75fa7edeadcdd6a068e7a963bb99a16d5d",
+      "counts_are_live": false,
+      "fields_observed": {
+        "brain_sources_field": "12/12",
+        "brain_status_field": "PASS",
+        "brain_version": "5.0.3-repair2",
+        "legal_as_of": "2026-11-06",
+        "legal_downloaded": 21,
+        "legal_gaps": 5,
+        "legal_groups": 11,
+        "legal_linked": 15,
+        "legal_pdfs": 43,
+        "note": "Copied from the sanitized snapshot already in this repo. Not re-counted."
+      },
+      "generated_at_ict": "2026-11-06T20:00:00+07:00",
+      "generated_at_raw": "06/11/2026 20:00 (UTC+7)",
+      "parse_ok": true,
+      "stale": false,
+      "stale_after_seconds": 93600
+    }
+  },
+  "execution": {
+    "event": "local",
+    "mode": "local-exercise",
+    "ref": "local",
+    "repository": "DX-ADVISORY/dx-brain-live",
+    "run_attempt": "1",
+    "run_id": "local-exercise",
+    "scheduled_run_completed": false
+  },
+  "governance": {
+    "active_client": "NONE_UNLESS_EXPLICIT",
+    "auto_promote": false,
+    "durable_authority": "DX_HUMAN_MEMORY",
+    "lessons_mode": "candidate-only",
+    "memory_mode": "reference-only",
+    "public_surface": "safe_aggregate_snapshots_only"
+  },
+  "laptop_catchup": {
+    "cloud_can_read_powered_off_machine": false,
+    "legal_monthly_scan_duplicated": false,
+    "local_ingestion_pending": true,
+    "on_reconnect": [
+      "Kéo repo này trước khi xuất bản để giữ thư mục status và cloud-status.js.",
+      "Giữ task DX_BrainMap_v6_Refresh chạy hằng ngày lúc 20:00 UTC+7.",
+      "Giữ lần quét luật hằng tháng trên máy nguồn. Worker này không làm thay việc đó.",
+      "Nếu chương trình xuất bản ghi đè index.html, giữ thẻ script dx-cloud-status-hook.",
+      "Giữ giờ nhịp cloud ở mục nhịp. Giờ thu thập chỉ đến từ biên nhận thu thập.",
+      "Chỉ xuất ảnh tổng hợp đã gạn. Thu hoạch hội thoại vẫn ở máy nguồn."
+    ],
+    "preserved_tasks": [
+      {
+        "cadence_ict": "daily 20:00",
+        "duplicated_by_cloud": false,
+        "name": "DX_BrainMap_v6_Refresh",
+        "relative_script": "Runtime/BrainMap_v5/publish_brain_v6r3.py"
+      }
+    ],
+    "probed_machine": false,
+    "snapshot_refresh_pending": false,
+    "source_of_truth": "laptop-local"
+  },
+  "missing_for_full_sync": [
+    {
+      "code": "publisher_script_absent",
+      "detail": "Runtime/BrainMap_v5/publish_brain_v6r3.py is not in this repo."
+    },
+    {
+      "code": "allowlist_empty",
+      "detail": "status/source_allowlist.json has no approved official source."
+    },
+    {
+      "code": "no_chat_exports",
+      "detail": "No sanitized ChatGPT, Claude, or Grok export is in this repo."
+    },
+    {
+      "code": "local_brain_unreachable",
+      "detail": "The source machine and its loopback brain are not inputs to this worker."
+    },
+    {
+      "code": "schedule_not_exercised_on_github",
+      "detail": "This file was written outside GitHub Actions. The cron is configured and has not completed here."
+    }
+  ],
+  "privacy": {
+    "scan_passed": true
+  },
+  "schema": "dx-cloud-contract/v1"
+}
