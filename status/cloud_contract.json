@@ -10,8 +10,8 @@
       "means_ingestion": false,
       "means_publish": false,
       "means_snapshot_refresh": false,
-      "recorded_at_ict": "2026-11-07T20:18:47.104666+07:00",
-      "recorded_at_utc": "2026-11-07T13:18:47.104666+00:00",
+      "recorded_at_ict": "2026-11-07T23:28:19.975320+07:00",
+      "recorded_at_utc": "2026-11-07T16:28:19.975320+00:00",
       "runner": "github-actions",
       "schedule_ict": [
         "07:20",
@@ -51,11 +51,11 @@
       "this_run_errors": []
     },
     "source_snapshot": {
-      "age_seconds": 87527,
+      "age_seconds": 98899,
       "anomaly": null,
-      "commit_committed_at": "2026-11-07T20:15:36+07:00",
-      "commit_sha": "875637fa514a7aba9007f69abbfcf0b373d96ba4",
-      "commit_subject": "Bổ sung chuyên môn theo ngành, pháp lý và M&A vào bản đồ",
+      "commit_committed_at": "2026-11-07T20:28:02+07:00",
+      "commit_sha": "49921daa68caab2c0e80cd4787f8af0ea5f785bc",
+      "commit_subject": "Gộp chuyên môn và ngành nghề vào bộ não 3D, thu gọn chữ",
       "content_sha256": "5839201748b32889e5416fa514ffec75fa7edeadcdd6a068e7a963bb99a16d5d",
       "counts_are_live": false,
       "fields_observed": {
@@ -73,7 +73,7 @@
       "generated_at_ict": "2026-11-06T20:00:00+07:00",
       "generated_at_raw": "06/11/2026 20:00 (UTC+7)",
       "parse_ok": true,
-      "stale": false,
+      "stale": true,
       "stale_after_seconds": 93600
     }
   },
@@ -83,7 +83,7 @@
     "ref": "main",
     "repository": "DX-ADVISORY/dx-brain-live",
     "run_attempt": "1",
-    "run_id": "42376365832",
+    "run_id": "42391436998",
     "scheduled_run_completed": true
   },
   "governance": {
@@ -115,7 +115,7 @@
       }
     ],
     "probed_machine": false,
-    "snapshot_refresh_pending": false,
+    "snapshot_refresh_pending": true,
     "source_of_truth": "laptop-local"
   },
   "missing_for_full_sync": [
