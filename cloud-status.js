@@ -244,9 +244,10 @@
       host = doc.createElement("section");
       host.id = "dx-cloud-status";
       host.setAttribute("aria-label", "Bốn mốc thời gian của bộ não");
-      var header = doc.querySelector("header");
-      if (header && header.insertAdjacentElement) header.insertAdjacentElement("afterend", host);
-      else if (doc.body) doc.body.insertBefore(host, doc.body.firstChild);
+      // Đặt khối bốn mốc ở cuối trang, ngay trên dòng chú thích nguồn (#foot).
+      var foot = doc.getElementById("foot");
+      if (foot && foot.parentNode) foot.parentNode.insertBefore(host, foot);
+      else if (doc.body) doc.body.appendChild(host);
     }
     function draw(contract) {
       host.innerHTML = renderPanel(contract, nowFn());

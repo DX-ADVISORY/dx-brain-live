@@ -135,6 +135,8 @@ const heading = { textContent: "Nhật ký · tail -f brain.log" };
 const schedule = element();
 const kpi = { textContent: "43" };
 const header = element();
+const footParent = { insertBefore(child, ref) { this.inserted = child; this.ref = ref; } };
+const foot = { id: "foot", parentNode: footParent };
 const created = [];
 const doc = {
   head: { appendChild() {} },
@@ -144,6 +146,7 @@ const doc = {
     if (id === "snapat") return snapat;
     if (id === "sched") return schedule;
     if (id === "kpis") return kpi;
+    if (id === "foot") return foot;
     return null;
   },
   querySelector(selector) {
@@ -185,8 +188,11 @@ assert(kpi.textContent === "43", "KPI text stays on the snapshot value");
 api.mount(doc, { fetch: fetchImpl, now: () => now }).then(function (contract) {
   assert(contract && contract.clocks.ingestion.complete === false, "mounted contract is not ingestion");
   assert(mounted.length === 1 && mounted[0].includes("status/cloud_contract.json"), mounted.join(","));
-  assert(header.next && header.next.innerHTML.includes('data-clock="ingestion"'), header.next && header.next.innerHTML);
-  assert(header.next.innerHTML.includes("no_approved_public_source"), header.next.innerHTML);
+  const panel = footParent.inserted;
+  assert(!header.next, "panel is no longer placed right after the header");
+  assert(panel && footParent.ref === foot, "panel sits at the bottom, just above #foot");
+  assert(panel.innerHTML.includes('data-clock="ingestion"'), panel.innerHTML);
+  assert(panel.innerHTML.includes("no_approved_public_source"), panel.innerHTML);
   assert(kpi.textContent === "43", "mount leaves the legal KPI alone");
   console.log("cloud-status tests passed");
 }).catch(function (error) {
