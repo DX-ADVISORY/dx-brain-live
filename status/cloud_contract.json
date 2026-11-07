@@ -10,9 +10,9 @@
       "means_ingestion": false,
       "means_publish": false,
       "means_snapshot_refresh": false,
-      "recorded_at_ict": "2026-11-07T08:54:52.549243+07:00",
-      "recorded_at_utc": "2026-11-07T01:54:52.549243+00:00",
-      "runner": "local-exercise",
+      "recorded_at_ict": "2026-11-07T20:18:47.104666+07:00",
+      "recorded_at_utc": "2026-11-07T13:18:47.104666+00:00",
+      "runner": "github-actions",
       "schedule_ict": [
         "07:20",
         "13:20",
@@ -26,7 +26,7 @@
         "10:20",
         "18:20"
       ],
-      "scheduled_run_completed": false,
+      "scheduled_run_completed": true,
       "stale_after_seconds": 28800,
       "worker_ran": true
     },
@@ -51,11 +51,11 @@
       "this_run_errors": []
     },
     "source_snapshot": {
-      "age_seconds": 46492,
+      "age_seconds": 87527,
       "anomaly": null,
-      "commit_committed_at": "2026-11-06T20:02:37+07:00",
-      "commit_sha": "5040f8b3f8cad497bc35a9caa60399ebd4e17f55",
-      "commit_subject": "refresh v6r3 3D+logo+kho luat 2026-11-06 20:00",
+      "commit_committed_at": "2026-11-07T20:15:36+07:00",
+      "commit_sha": "875637fa514a7aba9007f69abbfcf0b373d96ba4",
+      "commit_subject": "Bổ sung chuyên môn theo ngành, pháp lý và M&A vào bản đồ",
       "content_sha256": "5839201748b32889e5416fa514ffec75fa7edeadcdd6a068e7a963bb99a16d5d",
       "counts_are_live": false,
       "fields_observed": {
@@ -78,13 +78,13 @@
     }
   },
   "execution": {
-    "event": "local",
-    "mode": "local-exercise",
-    "ref": "local",
+    "event": "schedule",
+    "mode": "github-actions",
+    "ref": "main",
     "repository": "DX-ADVISORY/dx-brain-live",
     "run_attempt": "1",
-    "run_id": "local-exercise",
-    "scheduled_run_completed": false
+    "run_id": "42376365832",
+    "scheduled_run_completed": true
   },
   "governance": {
     "active_client": "NONE_UNLESS_EXPLICIT",
@@ -134,10 +134,6 @@
     {
       "code": "local_brain_unreachable",
       "detail": "The source machine and its loopback brain are not inputs to this worker."
-    },
-    {
-      "code": "schedule_not_exercised_on_github",
-      "detail": "This file was written outside GitHub Actions. The cron is configured and has not completed here."
     }
   ],
   "privacy": {
