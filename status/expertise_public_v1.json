@@ -1,0 +1,419 @@
+{
+  "schema": "dx-expertise-public/v1",
+  "status": "PUBLISHED_CATALOGUE",
+  "timezone": "Asia/Ho_Chi_Minh",
+  "active_client": "NONE_UNLESS_EXPLICIT",
+  "catalogue_status": "proposed_editorial_mapping",
+  "source_snapshot": {
+    "as_of": "2026-11-06T20:00:00+07:00",
+    "observed_on": "2026-11-07",
+    "source_url": "https://dx-advisory.github.io/dx-brain-live/",
+    "counts_are_live": false,
+    "independently_recounted": false,
+    "skills_total": 265,
+    "legal_pdfs": 43,
+    "legal_gaps": 5,
+    "knowledge_cards": 63,
+    "approved_lessons": 68,
+    "skills": [
+      {
+        "id": "accounting",
+        "label": "Kế toán, thuế, kiểm toán",
+        "count": 48
+      },
+      {
+        "id": "ma-investment",
+        "label": "PE, M&A & đầu tư",
+        "count": 45
+      },
+      {
+        "id": "technology",
+        "label": "CNTT & AI",
+        "count": 43
+      },
+      {
+        "id": "cfo",
+        "label": "CFO & FP&A",
+        "count": 35
+      },
+      {
+        "id": "banking",
+        "label": "Ngân hàng & vốn vay",
+        "count": 30
+      },
+      {
+        "id": "capital",
+        "label": "Vốn & nhà đầu tư",
+        "count": 17
+      },
+      {
+        "id": "legal",
+        "label": "Pháp lý & quản trị",
+        "count": 16
+      },
+      {
+        "id": "real-estate",
+        "label": "BĐS & dự án",
+        "count": 13
+      },
+      {
+        "id": "construction",
+        "label": "Xây dựng",
+        "count": 11
+      },
+      {
+        "id": "dental",
+        "label": "Nha khoa",
+        "count": 5
+      },
+      {
+        "id": "other",
+        "label": "Khác",
+        "count": 2
+      }
+    ]
+  },
+  "industries": [
+    {
+      "id": "manufacturing",
+      "label": "Công nghiệp & sản xuất",
+      "focus": "Giá thành, vốn lưu động, đầu tư nhà máy và giao dịch doanh nghiệp.",
+      "legal_topics": [
+        "Hợp đồng mua bán, gia công và phân phối",
+        "Hồ sơ đầu tư nhà máy, môi trường và an toàn",
+        "Lao động, quản trị và quyền sở hữu tài sản"
+      ],
+      "ma_topics": [
+        "Mua cổ phần hoặc tài sản nhà máy",
+        "Thẩm định đất, máy móc và nghĩa vụ tiềm ẩn",
+        "Giá mua, điều kiện hoàn tất và hợp nhất sau giao dịch"
+      ],
+      "finance_topics": [
+        "Giá thành theo sản phẩm và năng lực sản xuất",
+        "Vốn lưu động, tồn kho và công nợ",
+        "Dòng tiền đầu tư dây chuyền"
+      ]
+    },
+    {
+      "id": "industrial-parks",
+      "label": "Khu công nghiệp",
+      "focus": "Đất, hạ tầng, hợp đồng thuê và cấu trúc vốn dự án.",
+      "legal_topics": [
+        "Hồ sơ đất, quy hoạch và quyền cho thuê",
+        "Đầu tư, môi trường và hạ tầng dùng chung",
+        "Hợp đồng thuê lại đất, nhà xưởng và phí dịch vụ"
+      ],
+      "ma_topics": [
+        "Thẩm định pháp nhân và dự án khu công nghiệp",
+        "Chuyển nhượng cổ phần, tài sản hoặc quyền dự án",
+        "Cấu trúc giao dịch và điều kiện hoàn tất"
+      ],
+      "finance_topics": [
+        "Kế hoạch đầu tư hạ tầng và tiến độ cho thuê",
+        "Dòng tiền thuê, phí và chi phí vận hành",
+        "Nguồn trả nợ và tài sản bảo đảm"
+      ]
+    },
+    {
+      "id": "property",
+      "label": "Bất động sản & NOXH",
+      "focus": "Lộ trình pháp lý, dòng tiền dự án và phương án đầu tư.",
+      "legal_topics": [
+        "Đất, quy hoạch và nghĩa vụ tài chính",
+        "Hồ sơ đầu tư, xây dựng và kinh doanh dự án",
+        "Điều kiện và hồ sơ NOXH theo từng giao dịch"
+      ],
+      "ma_topics": [
+        "Thẩm định pháp nhân, đất và dự án",
+        "Mua cổ phần, chuyển nhượng dự án hoặc liên doanh",
+        "Điều kiện tiên quyết và nghĩa vụ tồn đọng"
+      ],
+      "finance_topics": [
+        "Tổng mức đầu tư và tiến độ dòng tiền",
+        "Kịch bản bán, thuê và huy động vốn",
+        "Khả năng trả nợ và độ nhạy"
+      ]
+    },
+    {
+      "id": "hospitality",
+      "label": "Khách sạn, nghỉ dưỡng & căn hộ dịch vụ",
+      "focus": "Tài sản, hợp đồng vận hành và dòng tiền lưu trú.",
+      "legal_topics": [
+        "Quyền sử dụng tài sản và hồ sơ hoạt động",
+        "Hợp đồng quản lý, thuê và nhượng quyền",
+        "Lao động, dữ liệu khách và trách nhiệm vận hành"
+      ],
+      "ma_topics": [
+        "Thẩm định tài sản và doanh nghiệp vận hành",
+        "Chuyển giao hợp đồng, thương hiệu và nhân sự",
+        "Giá mua gắn với dòng tiền và điều kiện bàn giao"
+      ],
+      "finance_topics": [
+        "Công suất, giá phòng và lợi nhuận bộ phận",
+        "Chi phí vận hành và đầu tư thay thế",
+        "Dòng tiền theo mùa và nghĩa vụ nợ"
+      ]
+    },
+    {
+      "id": "healthcare",
+      "label": "Bệnh viện, y tế & nha khoa",
+      "focus": "Hồ sơ hoạt động, quản trị tài chính và giao dịch cơ sở y tế.",
+      "legal_topics": [
+        "Phạm vi hoạt động, nhân sự và hồ sơ cơ sở",
+        "Hợp đồng chuyên môn, dịch vụ và thiết bị",
+        "Quyền riêng tư và quản lý dữ liệu người bệnh"
+      ],
+      "ma_topics": [
+        "Thẩm định pháp nhân và hồ sơ hoạt động",
+        "Cấu trúc mua lại hoặc hợp tác cơ sở",
+        "Giữ nhân sự chủ chốt và điều kiện hoàn tất"
+      ],
+      "finance_topics": [
+        "Doanh thu, chi phí theo dịch vụ và cơ sở",
+        "Đầu tư thiết bị và dòng tiền vận hành",
+        "Công nợ, cơ chế chia doanh thu và gọi vốn"
+      ]
+    },
+    {
+      "id": "infrastructure",
+      "label": "Cơ sở hạ tầng giao thông",
+      "focus": "Hợp đồng xây dựng, hồ sơ thanh toán và vốn thi công.",
+      "legal_topics": [
+        "Hợp đồng, phụ lục và phạm vi công việc",
+        "Tạm ứng, bảo lãnh, nghiệm thu và thanh toán",
+        "Điều chỉnh giá, phát sinh và tranh chấp"
+      ],
+      "ma_topics": [
+        "Thẩm định doanh nghiệp và dự án hạ tầng",
+        "Liên danh, liên doanh và giao dịch cổ phần",
+        "Nghĩa vụ hợp đồng và điều kiện bàn giao"
+      ],
+      "finance_topics": [
+        "Dòng tiền theo công trường và hợp đồng",
+        "Tuổi nợ, kế hoạch thu và trả nhà cung cấp",
+        "Hạn mức tín dụng và bảo lãnh"
+      ]
+    },
+    {
+      "id": "mining",
+      "label": "Mỏ & khoáng sản",
+      "focus": "Quyền khai thác, nghĩa vụ dự án và dòng tiền theo trữ lượng.",
+      "legal_topics": [
+        "Hồ sơ quyền khai thác và phạm vi dự án",
+        "Đất, môi trường và nghĩa vụ liên quan",
+        "Hợp đồng khai thác, vận chuyển và tiêu thụ"
+      ],
+      "ma_topics": [
+        "Thẩm định quyền, trữ lượng và nghĩa vụ tồn tại",
+        "Mua pháp nhân hoặc hợp tác khai thác",
+        "Điều kiện giao dịch và phân bổ trách nhiệm"
+      ],
+      "finance_topics": [
+        "Chi phí khai thác và hoàn nguyên",
+        "Sản lượng, giá bán và vòng đời dự án",
+        "Dòng tiền đầu tư và nguồn trả nợ"
+      ]
+    },
+    {
+      "id": "retail",
+      "label": "Bán lẻ & hàng tiêu dùng nhanh",
+      "focus": "Dòng tiền chuỗi, hệ thống phân phối và giao dịch mở rộng.",
+      "legal_topics": [
+        "Hợp đồng phân phối, đại lý và mặt bằng",
+        "Quyền thương hiệu, nhãn hàng và dữ liệu",
+        "Lao động và nghĩa vụ với người tiêu dùng"
+      ],
+      "ma_topics": [
+        "Thẩm định chuỗi, cửa hàng và kênh phân phối",
+        "Mua cổ phần, tài sản hoặc nhãn hàng",
+        "Điều kiện chuyển giao mặt bằng và hợp đồng"
+      ],
+      "finance_topics": [
+        "Lợi nhuận theo cửa hàng, sản phẩm và kênh",
+        "Tồn kho, công nợ và vốn lưu động",
+        "Dòng tiền mở rộng và điểm hòa vốn"
+      ]
+    },
+    {
+      "id": "technology",
+      "label": "Công nghệ thông tin & AI",
+      "focus": "Tài sản trí tuệ, dữ liệu và cấu trúc vốn doanh nghiệp công nghệ.",
+      "legal_topics": [
+        "Sở hữu mã nguồn, dữ liệu và tài sản trí tuệ",
+        "Hợp đồng phần mềm, dịch vụ và nhà cung cấp",
+        "Bảo vệ dữ liệu và trách nhiệm khi dùng AI"
+      ],
+      "ma_topics": [
+        "Thẩm định mã nguồn, quyền sở hữu và hợp đồng",
+        "Giao dịch cổ phần, tài sản hoặc đội ngũ",
+        "Điều kiện chuyển giao và giữ nhân sự chủ chốt"
+      ],
+      "finance_topics": [
+        "Doanh thu định kỳ và chi phí phục vụ khách",
+        "Chi phí phát triển và nhu cầu vốn",
+        "Định giá, cơ cấu cổ phần và gọi vốn"
+      ]
+    }
+  ],
+  "needs": [
+    {
+      "id": "legal",
+      "label": "Pháp lý, pháp luật & quản trị",
+      "topic_key": "legal_topics",
+      "skill_ids": [
+        "legal"
+      ],
+      "service_codes": [
+        "03_LEGAL"
+      ],
+      "outputs": [
+        "Danh mục hồ sơ và căn cứ cần đối chiếu",
+        "Bảng rủi ro, điều kiện và đầu việc cần xử lý",
+        "Đề xuất điều khoản hoặc phương án xử lý có giới hạn áp dụng"
+      ]
+    },
+    {
+      "id": "ma",
+      "label": "M&A & giao dịch",
+      "topic_key": "ma_topics",
+      "skill_ids": [
+        "ma-investment",
+        "legal"
+      ],
+      "service_codes": [
+        "03_LEGAL",
+        "05_VALUATION_ADVISOR",
+        "06_RAISING_CAPITAL"
+      ],
+      "outputs": [
+        "Danh mục thẩm định pháp lý, tài chính và thuế",
+        "Phương án giao dịch, giá mua và cơ cấu vốn",
+        "Điều kiện hoàn tất, trách nhiệm và kế hoạch sau giao dịch"
+      ]
+    },
+    {
+      "id": "cfo",
+      "label": "CFO & quản trị dòng tiền",
+      "topic_key": "finance_topics",
+      "skill_ids": [
+        "cfo"
+      ],
+      "service_codes": [
+        "01_CFO_BANKABILITY"
+      ],
+      "outputs": [
+        "Bức tranh dòng tiền và các điểm cần quyết định",
+        "Kế hoạch thu, chi và vốn lưu động",
+        "Báo cáo quản trị cùng chỉ tiêu theo dõi"
+      ]
+    },
+    {
+      "id": "tax",
+      "label": "Kế toán, thuế & kiểm toán",
+      "topic_key": "finance_topics",
+      "skill_ids": [
+        "accounting",
+        "legal"
+      ],
+      "service_codes": [
+        "02_TAX_ACCOUNTING_AUDIT",
+        "03_LEGAL"
+      ],
+      "outputs": [
+        "Đối chiếu sổ sách, báo cáo và hồ sơ thuế",
+        "Danh sách chênh lệch và nghĩa vụ cần xác minh",
+        "Kế hoạch chỉnh sửa hồ sơ và kiểm soát định kỳ"
+      ]
+    },
+    {
+      "id": "credit",
+      "label": "Vay ngân hàng & bảo lãnh",
+      "topic_key": "finance_topics",
+      "skill_ids": [
+        "banking",
+        "cfo"
+      ],
+      "service_codes": [
+        "01_CFO_BANKABILITY"
+      ],
+      "outputs": [
+        "Hồ sơ tín dụng và tài sản bảo đảm cần bổ sung",
+        "Dòng tiền trả nợ và các kịch bản sức chịu đựng",
+        "Đề xuất hạn mức, kỳ hạn và điều kiện giải ngân"
+      ]
+    },
+    {
+      "id": "valuation",
+      "label": "Định giá & mô hình tài chính",
+      "topic_key": "finance_topics",
+      "skill_ids": [
+        "ma-investment",
+        "cfo"
+      ],
+      "service_codes": [
+        "05_VALUATION_ADVISOR"
+      ],
+      "outputs": [
+        "Mô hình tài chính gắn với nguồn và giả định",
+        "Khoảng giá trị cùng kịch bản nhạy cảm",
+        "Các điều kiện ảnh hưởng đến quyết định đầu tư"
+      ]
+    },
+    {
+      "id": "raising",
+      "label": "Gọi vốn & nhà đầu tư",
+      "topic_key": "ma_topics",
+      "skill_ids": [
+        "capital",
+        "ma-investment"
+      ],
+      "service_codes": [
+        "06_RAISING_CAPITAL"
+      ],
+      "outputs": [
+        "Nhu cầu vốn, mục đích sử dụng và lộ trình",
+        "Cơ cấu cổ phần, điều kiện vốn và phương án đàm phán",
+        "Bộ hồ sơ giới thiệu giao dịch theo phạm vi được duyệt"
+      ]
+    },
+    {
+      "id": "restructure",
+      "label": "Tái cấu trúc & phục hồi",
+      "topic_key": "finance_topics",
+      "skill_ids": [
+        "cfo",
+        "legal",
+        "banking"
+      ],
+      "service_codes": [
+        "01_CFO_BANKABILITY",
+        "03_LEGAL"
+      ],
+      "outputs": [
+        "Chẩn đoán dòng tiền, nợ và nghĩa vụ hợp đồng",
+        "Kế hoạch phục hồi theo thứ tự ưu tiên",
+        "Các mốc quyết định và chỉ tiêu kiểm soát"
+      ]
+    },
+    {
+      "id": "market",
+      "label": "Thị trường & quyết định đầu tư",
+      "topic_key": "finance_topics",
+      "skill_ids": [
+        "ma-investment"
+      ],
+      "service_codes": [
+        "04_MARKET"
+      ],
+      "outputs": [
+        "Bộ dữ liệu thị trường có nguồn và ngày",
+        "So sánh phương án cùng giả định cần kiểm",
+        "Bản nhận định phục vụ quyết định cụ thể"
+      ]
+    }
+  ],
+  "daily_coverage": [],
+  "events": [],
+  "verification_note": "Ảnh số liệu đã xuất; chưa đếm lại kho kỹ năng, chưa xác minh hiệu lực từng văn bản và chưa có chuỗi biên nhận tiến triển theo ngành.",
+  "reference_date": "2026-11-07"
+}

@@ -282,3 +282,15 @@
     else mount(document);
   }
 })(typeof globalThis !== "undefined" ? globalThis : this);
+
+/* Add the expertise explorer through the status hook retained by the publisher.
+   Snapshot HTML, KPI values, brain topology, and source schedules stay intact. */
+(function () {
+  if (typeof document === "undefined" || !document.getElementById("snap") || document.getElementById("dx-expertise-loader")) return;
+  var anchor = document.currentScript;
+  var script = document.createElement("script");
+  script.id = "dx-expertise-loader";
+  script.src = new URL("expertise-v1.js", anchor && anchor.src ? anchor.src : document.baseURI).href;
+  document.head.appendChild(script);
+})();
+
