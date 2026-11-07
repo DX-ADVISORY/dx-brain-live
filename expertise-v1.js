@@ -46,6 +46,7 @@
   q('history').innerHTML=dates.length?'<table class="dx-history"><thead><tr><th>Ngày</th><th>Tri thức duyệt</th><th>Ghi bộ nhớ</th><th>Truy xuất đạt</th></tr></thead><tbody>'+dates.map(date=>{const v=root.DXExpertiseModel.daily(data,state.industry,state.need,date).counts;return '<tr><td>'+esc(date)+'</td>'+['approved','memory_written','retrieval_passed'].map(k=>'<td>'+(v[k]===null?'Chưa xác minh':v[k])+'</td>').join('')+'</tr>';}).join('')+'</tbody></table>':'<p>Chưa có chuỗi nhật ký đã xác nhận để so sánh 7 ngày. Chưa thể kết luận năng lực tăng hoặc giảm.</p>';
   if(state.fetchError)q('fetch-state').textContent='Chưa đọc được bản dữ liệu mới. Các mục hiện tại vẫn theo ảnh đã ghi nhận trước đó.';
   else q('fetch-state').textContent='Tự kiểm tra bản tổng hợp khi trang đang mở mỗi 5 phút. Mốc kiểm tra giao diện không được dùng làm mốc học hoặc nạp bộ nhớ.';
+  if(root.dispatchEvent&&root.CustomEvent)root.dispatchEvent(new root.CustomEvent('dx-expertise-change',{detail:{industry:state.industry,need:state.need,date:state.date,counts:d.counts}}));
  }
  function mount(doc,baseUrl){
   if(doc.getElementById('dx-expertise'))return;
@@ -54,14 +55,16 @@
   const main=doc.querySelector('main');if(main)main.insertAdjacentElement('afterend',host);else doc.body.appendChild(host);
   host.innerHTML='<div class="dx-error">Đang đọc danh mục chuyên môn và nhật ký tổng hợp…</div>';
   let data=null,busy=false;const state={industry:'manufacturing',need:'legal',date:today(),fetchError:false};
-  function openSelection(industry,need){if(!data)return;if(industry)state.industry=industry;if(need)state.need=need;render(host,data,state);host.scrollIntoView({behavior:doc.body.classList.contains('reduced')?'auto':'smooth',block:'start'});}
+  function openSelection(industry,need){if(!data)return;if(industry)state.industry=industry;if(need)state.need=need;render(host,data,state);const stage=doc.getElementById('stage');(stage||host).scrollIntoView({behavior:'auto',block:'start'});}
+  root.DXExpertiseView.select=openSelection;
+  root.DXExpertiseView.current=()=>({data,state:{...state}});
   function installLinks(){
    const bars=doc.getElementById('bars');if(bars&&!doc.getElementById('dx-expertise-open')){
-    const link=doc.createElement('a');link.id='dx-expertise-open';link.href='#dx-expertise';link.textContent='Xem chuyên môn theo ngành';bars.insertAdjacentElement('afterend',link);
+    const link=doc.createElement('a');link.id='dx-expertise-open';link.href='#stage';link.textContent='Khám phá chuyên môn 3D';bars.insertAdjacentElement('afterend',link);
     Array.from(bars.querySelectorAll('.bar')).forEach((bar,i)=>{const label=bar.firstElementChild;if(!label)return;const button=doc.createElement('button');button.type='button';button.className='dx-skill-link';button.textContent=label.textContent;button.setAttribute('aria-controls','dx-expertise');button.addEventListener('click',()=>{const targets=[[null,'tax'],[null,'ma'],['technology','legal'],[null,'cfo'],[null,'credit'],[null,'raising'],[null,'legal'],['property','legal'],['infrastructure','legal'],['healthcare','legal'],[null,'market']];const [industry,need]=targets[i]||[null,'legal'];openSelection(industry,need);});label.textContent='';label.appendChild(button);});
    }
-   const header=doc.querySelector('header');if(header&&!doc.getElementById('dx-expertise-nav')){const a=doc.createElement('a');a.id='dx-expertise-nav';a.href='#dx-expertise';a.textContent='Chuyên môn theo ngành';header.appendChild(a);}
-   const stage=doc.getElementById('stage');if(stage&&!doc.getElementById('dx-motion-note')){const note=doc.createElement('div');note.id='dx-motion-note';note.textContent='Chuyển động minh họa · tiến triển tri thức được tính từ biên nhận ở mục bên dưới';stage.appendChild(note);}
+   const header=doc.querySelector('header');if(header&&!doc.getElementById('dx-expertise-nav')){const a=doc.createElement('a');a.id='dx-expertise-nav';a.href='#stage';a.textContent='Chuyên môn 3D';header.appendChild(a);}
+   const stage=doc.getElementById('stage');if(stage&&!doc.getElementById('dx-motion-note')){const note=doc.createElement('div');note.id='dx-motion-note';note.textContent='Chuyển động minh họa · số liệu theo biên nhận';stage.appendChild(note);}
   }
   function initialize(){
    host.innerHTML=shell();const q=name=>host.querySelector('[data-dx="'+name+'"]');
@@ -72,8 +75,12 @@
    q('industry-select').addEventListener('change',e=>{state.industry=e.target.value;render(host,data,state);});
    q('needs').addEventListener('click',e=>{const b=e.target.closest('[data-need]');if(b){state.need=b.dataset.need;render(host,data,state);}});
    q('date').addEventListener('change',e=>{if(e.target.value){state.date=e.target.value;render(host,data,state);}});
+   const detail=doc.createElement('details');detail.className='dx-full-details';
+   while(host.firstChild)detail.appendChild(host.firstChild);
+   const summary=doc.createElement('summary');summary.textContent='Chi tiết chuyên môn & nguồn dữ liệu';detail.insertBefore(summary,detail.firstChild);host.appendChild(detail);
    installLinks();render(host,data,state);
-   if(root.location.hash==='#dx-expertise')host.scrollIntoView({behavior:'auto',block:'start'});
+   if(root.location.hash==='#dx-expertise')detail.open=true;
+   if(!doc.getElementById('dx-expertise-3d-loader')){const sceneScript=doc.createElement('script');sceneScript.id='dx-expertise-3d-loader';sceneScript.src=new URL('brain-expertise-3d.js',baseUrl).href;doc.head.appendChild(sceneScript);}
   }
   async function refresh(){
    if(busy||doc.hidden)return;busy=true;

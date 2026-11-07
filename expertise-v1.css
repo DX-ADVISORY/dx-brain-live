@@ -63,3 +63,32 @@
 @media(max-width:1100px){#dx-expertise .dx-body{grid-template-columns:220px 1fr}#dx-expertise .dx-columns{grid-template-columns:1fr;gap:18px}#dx-expertise .dx-stage-grid{grid-template-columns:repeat(3,minmax(0,1fr))}#dx-expertise .dx-stage{border-bottom:1px solid var(--dx-line)}}
 @media(max-width:680px){#dx-expertise{margin:4px 12px 16px}#dx-expertise .dx-heading{padding:20px 16px;display:block}#dx-expertise .dx-version{margin-top:10px}#dx-expertise h2{font-size:23px}#dx-expertise .dx-body{display:block}#dx-expertise .dx-industries{padding:16px;border-right:0;border-bottom:1px solid var(--dx-line)}#dx-expertise .dx-industry-list{display:none}#dx-expertise .dx-mobile-select{display:block}#dx-expertise .dx-content{padding:20px 16px}#dx-expertise .dx-daily{padding:20px 16px}#dx-expertise .dx-stage-grid{grid-template-columns:repeat(2,minmax(0,1fr))}#dx-expertise .dx-stage{padding:12px}#dx-expertise .dx-stage-count{font-size:16px}#dx-expertise .dx-provenance{padding:15px 16px}#dx-expertise .dx-history th,#dx-expertise .dx-history td{padding:8px 4px;font-size:10px}#dx-expertise .dx-date input{font-size:16px}#dx-expertise-nav{margin-left:0}#dx-motion-note{bottom:43px;font-size:10px}}
 @media(prefers-reduced-motion:reduce){#dx-expertise *{animation:none!important;transition:none!important}}
+
+/* Visual mode: expertise lives inside the existing 3D brain; prose is optional. */
+#dx-expertise>.dx-full-details>summary{padding:12px 18px;color:#c7a86d;cursor:pointer;font:12px/1.5 Tahoma,Arial,sans-serif}
+#dx-expertise>.dx-full-details[open]>summary{border-bottom:1px solid #2c3a4c}
+body.dx-visual-brain main{grid-template-columns:195px minmax(0,1fr)}
+body.dx-visual-brain main>.pn:nth-child(3),body.dx-visual-brain #regs,body.dx-visual-brain main>.pn:first-child>h3:first-child{display:none}
+body.dx-visual-brain #kpis{grid-template-columns:repeat(4,minmax(0,1fr))}
+body.dx-visual-brain #kpis>.k:nth-child(n+5),body.dx-visual-brain #dx-cloud-status{display:none}
+body.dx-visual-brain #stage{min-height:720px}
+#stage.dx-expertise-mode #card,#stage.dx-expertise-mode #maplogo,#stage.dx-expertise-mode #lbl .lb:not(.hub){display:none!important}
+#dx-3d-controls{position:absolute;right:14px;top:14px;z-index:8;width:min(370px,calc(100% - 28px));padding:10px 12px;background:#0b1320e8;border:1px solid #3c4859;color:#d7e1ee;font:12px/1.5 Tahoma,Arial,sans-serif}
+#dx-3d-controls button,#dx-3d-controls select{font:12px/1.4 Tahoma,Arial,sans-serif;border-radius:0;background:#101c2c;color:#d7e1ee;border:1px solid #3c4859;box-shadow:none;text-shadow:none}
+#dx-3d-controls button{min-height:32px;padding:5px 10px;cursor:pointer}
+#dx-3d-controls button[aria-pressed=true]{color:#f0dbb1;border-color:#c7a86d;background:#1b2a3a}
+#dx-3d-controls .dx-3d-modes{display:flex;gap:6px}
+#dx-3d-controls .dx-3d-selects{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px}
+#dx-3d-controls label{display:grid;gap:3px;font-size:10px;color:#9eafc3;min-width:0}
+#dx-3d-controls select{width:100%;min-width:0;min-height:35px;padding:6px 3px;font-size:11px}
+#dx-3d-controls .dx-3d-selection{color:#f0dbb1;font-size:13px;margin-top:9px}
+#dx-3d-controls .dx-3d-proof{color:#9eafc3;font-size:10px;margin-top:3px}
+#dx-3d-controls [hidden]{display:none!important}
+#dx-3d-labels{position:absolute;inset:0;pointer-events:none;overflow:hidden;z-index:5}
+#dx-3d-labels .dx-3d-node{position:absolute;transform:translate(-50%,-50%);pointer-events:auto;white-space:nowrap;border:1px solid var(--node-color);border-radius:0;max-width:145px;padding:4px 8px;background:#0a1322ed;color:var(--node-color);font:11px/1.3 Tahoma,Arial,sans-serif;box-shadow:none;text-shadow:none;cursor:pointer;min-height:29px}
+#dx-3d-labels .dx-3d-node[aria-pressed=true]{background:#1b2a3af5;color:#fff;border-width:2px;font-weight:700;padding:5px 10px}
+#dx-3d-labels .dx-3d-node[hidden]{display:none!important}
+#dx-3d-labels button:focus-visible,#dx-3d-controls button:focus-visible,#dx-3d-controls select:focus-visible{outline:2px solid #fff;outline-offset:3px}
+#stage.dx-expertise-mode #dx-motion-note{bottom:31px;right:auto;max-width:65%;font-size:10px;padding:2px 4px}
+@media(max-width:1100px){body.dx-visual-brain main{grid-template-columns:1fr}body.dx-visual-brain main>.pn:first-child{display:none}body.dx-visual-brain #stage{min-height:680px}}
+@media(max-width:680px){body.dx-visual-brain #kpis{grid-template-columns:repeat(2,minmax(0,1fr))}body.dx-visual-brain #stage{min-height:640px}#dx-3d-controls{right:10px;top:10px;width:calc(100% - 20px);padding:8px 10px}#dx-3d-controls select{font-size:16px;min-height:40px}#dx-3d-labels .dx-3d-node{font-size:11px;min-height:32px;padding:5px 7px}#stage.dx-expertise-mode #dx-motion-note{max-width:95%;bottom:40px}}

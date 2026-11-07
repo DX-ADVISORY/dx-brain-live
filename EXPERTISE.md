@@ -2,6 +2,10 @@
 
 Lớp giao diện này bổ sung danh mục 9 ngành và 9 nhu cầu, ưu tiên pháp lý và M&A. Không thay ảnh nguồn, số KPI, mô hình 3D, tác vụ máy nguồn hoặc nhịp cloud.
 
+Theo yêu cầu thu gọn chữ, `brain-expertise-3d.js` bổ sung hai cụm quỹ đạo chuyên môn và ngành nghề vào cùng scene Three.js hiện có. Các nút sáng, đường dẫn và hạt chuyển động là minh họa chuyên môn, không phải topology hạ tầng hoặc lượng tri thức đã nạp. Chỉ các nhãn phía trước được hiện để hạn chế chồng chữ. Các nút/ngành kết nối cùng bộ chọn hiện có; bảng diễn giải nằm trong mục chi tiết đóng sẵn.
+
+Chế độ mặc định “Chuyên môn 3D” mở rộng vùng não, giữ bốn số kho chính và thu gọn nhật ký kỹ thuật. Nút “Hệ thống” trả lại các vùng chức năng, nguồn, nhật ký và bốn mốc. Hình học não và dữ liệu gốc không bị viết lại. Nút giảm chuyển động tiếp tục dừng chuyển động của lớp mới.
+
 `cloud-status.js` tải `expertise-v1.js` qua hook hiện có. Trình xuất máy nguồn cần tiếp tục giữ `dx-cloud-status-hook`, đồng thời pull các tệp module trước khi xuất bản. `index.html` không cần thêm hook khác.
 
 - `expertise-v1.js`: giao diện, liên kết thanh kỹ năng và kiểm tra bản tổng hợp mỗi 5 phút khi trang mở.
